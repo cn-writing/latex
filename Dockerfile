@@ -10,7 +10,7 @@ ENV TEXLIVE_VERSION="2023.20240207-1"
 ENV LATEXMK_VERSION="1:4.83-1"
 
 # renovate: suite=stable depName=biber
-ENV BIBER_VERSION="2.19-2"
+ENV BIBER_VERSION="2.20-2"
 
 # renovate: suite=stable depName=chktex
 ARG CHKTEX_VERSION="1.7.8-1"
