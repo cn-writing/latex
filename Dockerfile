@@ -7,7 +7,7 @@ ENV TZ=Europe/London
 ENV TEXLIVE_VERSION="2023.20240207-1"
 
 # renovate: suite=stable depName=latexmk
-ENV LATEXMK_VERSION="1:4.83-1"
+ENV LATEXMK_VERSION="1:4.86~ds-1"
 
 # renovate: suite=stable depName=biber
 ENV BIBER_VERSION="2.19-2"
