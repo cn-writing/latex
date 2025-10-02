@@ -4,7 +4,7 @@ LABEL maintainer="Julian Nonino <noninojulian@gmail.com>"
 ENV TZ=Europe/London
 
 # renovate: suite=stable depName=texlive-full
-ENV TEXLIVE_VERSION="2023.20240207-1"
+ENV TEXLIVE_VERSION="2024.20250309-1"
 
 # renovate: suite=stable depName=latexmk
 ENV LATEXMK_VERSION="1:4.83-1"
