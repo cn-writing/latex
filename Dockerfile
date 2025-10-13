@@ -13,9 +13,9 @@ ENV LATEXMK_VERSION="1:4.83-1"
 ENV BIBER_VERSION="2.19-2"
 
 # renovate: datasource=ubuntu-package suite=noble depName=chktex
-ARG CHKTEX_VERSION="1.7.8-1"
+ENV CHKTEX_VERSION="1.7.8-1"
 
-ENV TEXCOUNT_VERSION=3_2_0_41
+ENV TEXCOUNT_VERSION="3_2_0_41"
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     apt update && \
