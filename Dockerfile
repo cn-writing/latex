@@ -3,17 +3,19 @@ LABEL maintainer="Julian Nonino <noninojulian@gmail.com>"
 
 ENV TZ=Europe/London
 
-# renovate: suite=stable depName=texlive-full
+# renovate: datasource=ubuntu-package suite=noble depName=texlive-full
 ENV TEXLIVE_VERSION="2023.20240207-1"
 
-# renovate: suite=stable depName=latexmk
+# renovate: datasource=ubuntu-package suite=noble depName=latexmk
 ENV LATEXMK_VERSION="1:4.83-1"
 
-# renovate: suite=stable depName=biber
+# renovate: datasource=ubuntu-package suite=noble depName=biber
 ENV BIBER_VERSION="2.19-2"
 
-# renovate: suite=stable depName=chktex
+# renovate: datasource=ubuntu-package suite=noble depName=chktex
 ARG CHKTEX_VERSION="1.7.8-1"
+
+ENV TEXCOUNT_VERSION=3_2_0_41
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     apt update && \
@@ -25,3 +27,10 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
     apt install -y chktex=${CHKTEX_VERSION} && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN wget https://app.uio.no/ifi/texcount/download.php?file=texcount_$TEXCOUNT_VERSION.zip && \
+    unzip download.php?file=texcount_$TEXCOUNT_VERSION.zip && \
+    rm -rf download.php?file=texcount_$TEXCOUNT_VERSION.zip && \
+    rm -rf Doc && \
+    mv texcount.pl /usr/bin/texcount && \
+    chmod +x /usr/bin/texcount
