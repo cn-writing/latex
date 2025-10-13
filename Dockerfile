@@ -19,7 +19,7 @@ ENV TEXCOUNT_VERSION=3_2_0_41
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
     apt update && \
-    apt install -y curl git make tzdata && \
+    apt install -y curl wget git make tzdata && \
     curl -1sLf 'https://dl.cloudsmith.io/public/task/task/setup.deb.sh' | bash && \
     apt update && \
     apt install -y task && \
@@ -28,9 +28,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
     apt clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget https://app.uio.no/ifi/texcount/download.php?file=texcount_$TEXCOUNT_VERSION.zip && \
-    unzip download.php?file=texcount_$TEXCOUNT_VERSION.zip && \
-    rm -rf download.php?file=texcount_$TEXCOUNT_VERSION.zip && \
-    rm -rf Doc && \
+RUN curl -fsSL "https://app.uio.no/ifi/texcount/download.php?file=texcount_$TEXCOUNT_VERSION.zip" -o texcount.zip && \
+    unzip texcount.zip && \
+    rm texcount.zip Doc -rf && \
     mv texcount.pl /usr/bin/texcount && \
     chmod +x /usr/bin/texcount
